@@ -10,9 +10,12 @@
           <%= link_to "About", about_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
+        <% if (logged_in? && current_user.admin?) %>
           <%= link_to "Bloggers", users_path, class: "nav-link" %>
         </li>
+        <% end %>
         <li class="nav-item dropdown">
+        <% if (logged_in? && current_user.admin?) %>
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Articles
           </a>
@@ -24,8 +27,10 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
+          <% end %>
         </li>
         <li class="nav-item dropdown">
+        <% if (logged_in? && current_user.admin?) %>
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Categories
           </a>
@@ -33,9 +38,9 @@
             <% if logged_in? && current_user.admin? %>
               <%= link_to "Create New Categories", new_category_path, class:"dropdown-item" %>
             <% end %>
-            <%= link_to "View Categories", categories_path, class:"dropdown-item" %>
-            
+            <%= link_to "View Categories", categories_path, class:"dropdown-item" %> 
           </div>
+        <% end %>
         </li>
         <% if logged_in? %>
         <li class="nav-item dropdown">
