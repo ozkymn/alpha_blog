@@ -56,18 +56,19 @@
           <li class="nav-item">
             <%= link_to 'Log Out', logout_path, class: "nav-link", method: :delete %>
           </li>
+          <% if logged_in? && current_user.admin? %>
+            <li class="nav-item">
+              <%= link_to 'Sign Up', signup_path, class: "nav-link" %>
+            </li>
+          <% end %>  
         <% else %>
           <li class="nav-item">
             <%= link_to 'Log In', login_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to 'Sign Up', signup_path, class: "nav-link" %>
-          </li>
+          
         <% end %>
+          
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      
     </div>
     </nav>

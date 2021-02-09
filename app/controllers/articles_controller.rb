@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, except: [:show, :index]
+  before_action :require_user
   before_action :require_same_user, only: [:edit, :update, :destroy]
   
   def show
@@ -55,7 +55,7 @@ class ArticlesController < ApplicationController
 
     def require_same_user
       if current_user != @article.user && !current_user.admin?
-        flash[:alert] = "You cant do"
+        flash[:alert] = "You cant do 2"
         redirect_to @article
       end
     end      
